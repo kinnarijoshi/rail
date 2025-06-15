@@ -1,0 +1,39 @@
+name: 🚚 Deploy CargoDham MCP to Railway
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: 📥 Checkout code
+      uses: actions/checkout@v4
+      
+    - name: 🟢 Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+        cache: 'npm'
+        
+    - name: 📦 Install dependencies
+      run: npm ci
+      
+    - name: 🔨 Build project
+      run: npm run build
+      
+    - name: 🧪 Run tests
+      run: npm test
+      
+    - name: 🚀 Deploy to Railway
+      uses: railwayapp/railway-deploy@v1.0.0
+      with:
+        railway_token: ${{ secrets.RAILWAY_TOKEN }}
+        service: cargodham-mcp-server
+      env:
+        CARGODHAM_API_TOKEN: ${{ secrets.CARGODHAM_API_TOKEN }}
+        CARGODHAM_VENDOR_CODE: ${{ secrets.CARGODHAM_VENDOR_CODE }} 
