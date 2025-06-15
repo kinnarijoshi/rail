@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CargoDham MCP Server</title>
+    <style>
+        body { font-family: system-ui; padding: 2rem; }
+        code { background: #f5f5f5; padding: 0.2rem 0.4rem; border-radius: 3px; }
+        pre { background: #f5f5f5; padding: 1rem; border-radius: 4px; overflow-x: auto; }
+    </style>
+</head>
+<body>
+    <h1>🚚 CargoDham MCP Server</h1>
+    <p>Your MCP server is running successfully!</p>
+    
+    <h2>📋 Available MCP Tools:</h2>
+    <ul>
+        <li><strong>cargodham_login</strong> - Authentication</li>
+        <li><strong>cargodham_track_order</strong> - Track shipments</li>
+        <li><strong>cargodham_calculate_rate</strong> - Calculate rates</li>
+        <li><strong>cargodham_book_order</strong> - Create orders</li>
+        <li><strong>cargodham_wallet_balance</strong> - Check balance</li>
+        <li><strong>cargodham_get_orders</strong> - List orders</li>
+        <li><strong>cargodham_cancel_order</strong> - Cancel orders</li>
+    </ul>
+    
+    <h2>🔗 MCP Endpoint:</h2>
+    <p><code>/api/mcp</code></p>
+    
+    <h2>🧪 Test with MCP Inspector:</h2>
+    <pre>npx @modelcontextprotocol/inspector@latest <span id="url"></span>/api/mcp</pre>
+    
+    <script>
+        document.getElementById('url').textContent = window.location.origin;
+    </script>
+</body>
+</html> 
